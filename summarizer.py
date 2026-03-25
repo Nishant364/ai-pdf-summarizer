@@ -1,21 +1,22 @@
-from transformers import pipeline
-
-# ⭐ Load model once (global)
-summarizer_model = pipeline(
-    "summarization",
-    model="facebook/bart-large-cnn"
-)
+import re
 
 def generate_summary(text):
 
-    if len(text) < 200:
+    # Clean text
+    text = text.replace("\n", " ")
+
+    # Split sentences
+    sentences = re.split(r'(?<=[.!?]) +', text)
+
+    # Agar text chhota hai
+    if len(sentences) <= 4:
         return text
 
-    result = summarizer_model(
-        text[:1000],
-        max_length=130,
-        min_length=40,
-        do_sample=False
-    )
+    # Smart summary (first + important middle + last)
+    summary = []
 
-    return result[0]['summary_text']
+    summary.append(sentences[0])
+    summary.append(sentences[len(sentences)//2])
+    summary.append(sentences[-1])
+
+    return " ".join(summary)
