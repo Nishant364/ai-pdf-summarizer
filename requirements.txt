@@ -1,0 +1,6 @@
+flask
+gunicorn
+pymongo
+bcrypt
+pymupdf
+dnspython
