@@ -1,0 +1,321 @@
+/* GLOBAL */
+
+body{
+    margin:0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:#eef1f6;
+    color:#222;
+    }
+    
+    
+    /* NAVBAR */
+    
+    .navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 60px;
+    background:white;
+    box-shadow:0 2px 15px rgba(0,0,0,0.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+    }
+    
+    .logo-section{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    }
+    
+    .logo{
+    width:42px;
+    }
+    
+    .brand h2{
+    margin:0;
+    font-size:19px;
+    }
+    
+    .brand p{
+    margin:0;
+    font-size:12px;
+    color:#888;
+    }
+    
+    .nav-links{
+    display:flex;
+    gap:30px;
+    }
+    
+    .nav-links a{
+    text-decoration:none;
+    color:#444;
+    font-weight:500;
+    transition:0.3s;
+    }
+    
+    .nav-links a:hover{
+    color:#ff5a4e;
+    }
+    
+    .nav-buttons{
+    display:flex;
+    gap:12px;
+    }
+    
+    .login-btn{
+    padding:8px 18px;
+    border-radius:20px;
+    border:1px solid #ff5a4e;
+    color:#ff5a4e;
+    text-decoration:none;
+    transition:0.3s;
+    }
+    
+    .login-btn:hover{
+    background:#ff5a4e;
+    color:white;
+    }
+    
+    .signup-btn{
+    padding:8px 20px;
+    border-radius:20px;
+    background:#ff5a4e;
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    }
+    
+    .signup-btn:hover{
+    background:#e0483d;
+    }
+    
+    
+    /* HERO */
+    
+    .hero{
+    text-align:center;
+    padding:90px 20px 60px;
+    }
+    
+    .hero h1{
+    font-size:52px;
+    margin-bottom:12px;
+    }
+    
+    .hero p{
+    color:#666;
+    font-size:18px;
+    }
+    
+    .summarize-btn{
+    background:#ff5a4e;
+    border:none;
+    padding:14px 28px;
+    color:white;
+    font-size:17px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:25px;
+    transition:0.3s;
+    display:inline-block;
+    text-decoration:none;
+    }
+    
+    .summarize-btn:hover{
+    background:#e0483d;
+    transform:translateY(-2px);
+    }
+    
+    
+    /* UPLOAD SECTION */
+    
+    .upload-section{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+    }
+    
+    .upload-card{
+    background:white;
+    padding:35px;
+    width:520px;
+    text-align:center;
+    border-radius:14px;
+    box-shadow:0 15px 50px rgba(0,0,0,0.08);
+    transition:0.3s;
+    }
+    
+    .upload-card:hover{
+    transform:translateY(-4px);
+    }
+    
+    .upload-card input{
+    margin:20px 0;
+    }
+    
+    
+    /* SUMMARY */
+    
+    .summary-section{
+    text-align:center;
+    margin:60px auto;
+    width:70%;
+    }
+    
+    .summary-box{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    font-size:18px;
+    line-height:1.6;
+    }
+    
+    
+    /* FEATURES */
+    
+    .features{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    margin:70px 20px;
+    flex-wrap:wrap;
+    }
+    
+    .feature{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    width:260px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,0.08);
+    transition:0.3s;
+    }
+    
+    .feature:hover{
+    transform:translateY(-6px);
+    }
+    
+    
+    /* DASHBOARD HISTORY */
+    
+    .history-section{
+    width:80%;
+    margin:40px auto;
+    }
+    
+    .history-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    }
+    
+    .history-card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:280px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+    
+    
+    /* SUMMARY PAGE */
+    
+    .page-container{
+    width:80%;
+    margin:auto;
+    padding:20px;
+    }
+    
+    .top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    }
+    
+    .back-btn{
+    background:#2c7be5;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    text-decoration:none;
+    transition:0.3s;
+    }
+    
+    .back-btn:hover{
+    background:#1b5fc1;
+    }
+    
+    .download-btn{
+    background:#27ae60;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    text-decoration:none;
+    transition:0.3s;
+    }
+    
+    .download-btn:hover{
+    background:#1e8c4c;
+    }
+    
+    .summary-card{
+    background:white;
+    padding:28px;
+    margin:25px 0;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    }
+    
+    .summary-card h2{
+    color:#2c3e50;
+    border-bottom:2px solid #eee;
+    padding-bottom:8px;
+    }
+    
+    .section-title{
+    margin-top:20px;
+    font-weight:bold;
+    color:#34495e;
+    }
+    
+    .keyword-box span{
+    background:#e8f1ff;
+    padding:7px 14px;
+    margin:5px;
+    display:inline-block;
+    border-radius:20px;
+    font-size:14px;
+    }
+    
+    .overall-summary{
+    background:#fff5f5;
+    padding:35px;
+    margin:45px auto;
+    border-radius:14px;
+    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+    border-left:6px solid #ff5a4e;
+    font-size:19px;
+    line-height:1.7;
+    }
+    
+    .tables{
+    background:#eef6ff;
+    padding:25px;
+    border-radius:12px;
+    margin-top:35px;
+    }
+    
+    
+    /* FOOTER */
+    
+    footer{
+    text-align:center;
+    padding:22px;
+    background:#222;
+    color:white;
+    margin-top:50px;
+    }

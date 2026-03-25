@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Summary Result</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<div class="top-bar">
+
+<a href="/dashboard" class="back-btn">⬅ Back</a>
+
+<h1>AI Summary Result</h1>
+
+<a href="#" class="download-btn">⬇ Download</a>
+
+</div>
+
+
+<!-- ⭐ OVERALL SUMMARY FIRST (Main Result) -->
+
+<div class="overall-summary">
+
+<h2>📄 Overall Smart Summary</h2>
+
+<p>{{overall}}</p>
+
+</div>
+
+
+<!-- ⭐ PAGE INSIGHTS (Lightweight Info Only) -->
+
+{% for p in pages %}
+
+<div class="summary-card">
+
+<h2>Page {{p.page}} Insights</h2>
+
+<div class="section-title">Key Points</div>
+<ul>
+{% for k in p.keypoints %}
+<li>{{k}}</li>
+{% endfor %}
+</ul>
+
+<div class="section-title">Keywords</div>
+
+<div class="keyword-box">
+{% for kw in p.keywords %}
+<span>{{kw}}</span>
+{% endfor %}
+</div>
+
+<details>
+<summary class="section-title">Graph Explanation</summary>
+<p>{{p.graph}}</p>
+</details>
+
+</div>
+
+{% endfor %}
+
+
+<!-- ⭐ TABLES -->
+
+{% if tables %}
+
+<div class="tables">
+
+<h2>Detected Tables</h2>
+
+{% for t in tables %}
+<p>{{t}}</p>
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PrepWise - AI PDF Summarizer</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="logo-section">
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+<div class="brand">
+<h2>PrepWise</h2>
+<p>Summaries in Seconds</p>
+</div>
+
+</div>
+
+
+<nav class="nav-links">
+
+<a href="/">Home</a>
+
+{% if session.user %}
+<a href="/dashboard">Summarizer</a>
+<a href="/logout">Logout</a>
+{% else %}
+<a href="/login">Login</a>
+<a href="/signup">Sign Up</a>
+{% endif %}
+
+</nav>
+
+</header>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<h1>AI Powered PDF Summarizer</h1>
+
+<p>
+Upload your PDF and instantly generate a short and easy summary using Artificial Intelligence.
+</p>
+
+{% if session.user %}
+<a href="/dashboard" class="summarize-btn">
+Go to Summarizer
+</a>
+{% else %}
+<a href="/login" class="summarize-btn">
+Login to Start
+</a>
+{% endif %}
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature">
+<h3>⚡ Fast Processing</h3>
+<p>Get summaries in seconds using AI technology.</p>
+</div>
+
+<div class="feature">
+<h3>📄 PDF Extraction</h3>
+<p>Automatically extracts important information from documents.</p>
+</div>
+
+<div class="feature">
+<h3>🤖 AI Powered</h3>
+<p>Uses advanced AI models for accurate summarization.</p>
+</div>
+
+</section>
+
+
+<footer>
+<p>© 2026 PrepWise AI | Developed by Nishant</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard - PrepWise</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="logo-section">
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+<div class="brand">
+<h2>PrepWise</h2>
+<p>Summaries in Seconds</p>
+</div>
+
+</div>
+
+
+<nav class="nav-links">
+
+<a href="/">Home</a>
+<a href="/dashboard">Summarizer</a>
+<a href="/logout">Logout</a>
+
+</nav>
+
+</header>
+
+
+<!-- TITLE -->
+
+<section class="hero">
+
+<h1>Upload PDF for AI Summary</h1>
+
+<p>Select your PDF file and generate summary instantly.</p>
+
+</section>
+
+
+<!-- UPLOAD CARD -->
+
+<section class="upload-section">
+
+<div class="upload-card">
+
+<h2>Upload PDF</h2>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+<input type="file" name="pdf" accept="application/pdf" required>
+
+<button type="submit" class="summarize-btn">
+Generate Summary
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- HISTORY SECTION -->
+
+{% if history %}
+
+<section class="history-section">
+
+<h2>Your Previous Summaries</h2>
+
+<div class="history-list">
+
+{% for item in history %}
+
+<div class="history-card">
+
+<h3>{{ item.file }}</h3>
+
+<p>{{ item.overall_summary[:150] }}...</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% endif %}
+
+
+<footer>
+<p>© 2026 PrepWise AI | Dashboard</p>
+</footer>
+
+</body>
+</html>
