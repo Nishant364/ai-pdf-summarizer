@@ -2,5 +2,9 @@ flask
 gunicorn
 pymongo
 bcrypt
-pymupdf
 dnspython
+pymupdf
+transformers
+torch
+scikit-learn
+numpy
