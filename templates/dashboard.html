@@ -2,59 +2,53 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Dashboard - PrepWise</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-
 <header class="navbar">
 
 <div class="logo-section">
-
 <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
 
 <div class="brand">
 <h2>PrepWise</h2>
 <p>Summaries in Seconds</p>
 </div>
-
 </div>
 
-
 <nav class="nav-links">
-
 <a href="/">Home</a>
 <a href="/dashboard">Summarizer</a>
 <a href="/logout">Logout</a>
-
 </nav>
 
 </header>
 
 
-<!-- TITLE -->
+<!-- HERO -->
+<section class="hero hidden">
 
-<section class="hero">
-
-<h1>Upload PDF for AI Summary</h1>
-
-<p>Select your PDF file and generate summary instantly.</p>
+<h1 id="typing-text"></h1>
+<p class="subtitle">
+    Upload your PDF and let AI do the magic ✨
+    </p>
 
 </section>
 
 
-<!-- UPLOAD CARD -->
 
-<section class="upload-section">
+<!-- 🚀 UPLOAD (DRAG & DROP UI) -->
+<section class="upload-section hidden">
 
 <div class="upload-card">
 
@@ -62,10 +56,13 @@
 
 <form action="/upload" method="POST" enctype="multipart/form-data">
 
-<input type="file" name="pdf" accept="application/pdf" required>
+<div class="upload-box" id="drop-area">
+    <p>📂 Drag & Drop your PDF here</p>
+    <input type="file" name="pdf" id="fileInput" accept="application/pdf" required>
+</div>
 
 <button type="submit" class="summarize-btn">
-Generate Summary
+Generate Summary 🚀
 </button>
 
 </form>
@@ -75,38 +72,105 @@ Generate Summary
 </section>
 
 
-<!-- HISTORY SECTION -->
+<!-- 📊 STATS CARDS -->
+<section class="dashboard hidden">
 
+<div class="dash-card">
+<h3>Total Files</h3>
+<p>{{ history|length if history else 0 }}</p>
+</div>
+
+<div class="dash-card">
+<h3>AI Status</h3>
+<p>Active ✅</p>
+</div>
+
+<div class="dash-card">
+<h3>Performance</h3>
+<p>Fast ⚡</p>
+</div>
+
+</section>
+
+
+<!-- HISTORY -->
 {% if history %}
-
-<section class="history-section">
+<section class="history-section hidden">
 
 <h2>Your Previous Summaries</h2>
 
 <div class="history-list">
 
 {% for item in history %}
-
 <div class="history-card">
-
 <h3>{{ item.file }}</h3>
-
-<p>{{ item.overall_summary[:150] }}...</p>
-
+<p>{{ item.overall_summary[:120] }}...</p>
 </div>
-
 {% endfor %}
 
 </div>
 
 </section>
-
 {% endif %}
 
 
+<!-- FOOTER -->
 <footer>
 <p>© 2026 PrepWise AI | Dashboard</p>
 </footer>
+
+
+<!-- 🔥 JS PART -->
+
+<!-- Typing Effect -->
+<script>
+const text = "Upload PDF for AI Summary 🚀";
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50);
+    }
+}
+
+window.onload = typeEffect;
+</script>
+
+
+<!-- Drag & Drop -->
+<script>
+const dropArea = document.getElementById("drop-area");
+
+dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.style.background = "#e0e7ff";
+});
+
+dropArea.addEventListener("dragleave", () => {
+    dropArea.style.background = "#f8f7ff";
+});
+
+dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    document.getElementById("fileInput").files = e.dataTransfer.files;
+});
+</script>
+
+
+<!-- Scroll Animation -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

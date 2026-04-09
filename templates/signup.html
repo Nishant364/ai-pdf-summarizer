@@ -1,11 +1,102 @@
-<h2>Signup</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST" action="/signup">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<input type="text" name="username" placeholder="Username">
+<title>Signup - PrepWise AI</title>
 
-<input type="password" name="password" placeholder="Password">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-<button type="submit">Signup</button>
+</head>
 
-</form>
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card glass">
+
+        <h2>Create Account 🚀</h2>
+        <p class="auth-subtitle">Join PrepWise AI today</p>
+
+        <form method="POST" action="/signup" onsubmit="return validateForm()">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter username" required>
+            </div>
+
+            <div class="input-group password-box">
+                <label>Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁</span>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+            </div>
+
+            <button type="submit" class="auth-btn">Signup</button>
+
+        </form>
+
+        <p class="switch-text">
+            Already have an account? 
+            <a href="/login">Login</a>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- 🔥 POPUP ALERT -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div id="popup" class="popup">
+        {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+<script>
+
+function togglePassword(){
+    const password = document.getElementById("password");
+
+    if(password.type === "password"){
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+
+function validateForm(){
+
+    const pass = document.getElementById("password").value;
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if(pass !== confirm){
+        alert("Passwords do not match ❌");
+        return false;
+    }
+
+    return true;
+}
+
+// Auto hide popup
+setTimeout(() => {
+    const popup = document.getElementById("popup");
+    if(popup){
+        popup.style.display = "none";
+    }
+}, 3000);
+
+</script>
+
+</body>
+
+</html>
